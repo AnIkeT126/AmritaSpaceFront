@@ -1,6 +1,5 @@
 # AmritaSpaceFront
 
-![AmritaSpaceFront Logo](https://via.placeholder.com/150)
 
 AmritaSpaceFront is the frontend application for the AmritaSpace project, aimed at providing a user interface for interacting with space-related data.
 
