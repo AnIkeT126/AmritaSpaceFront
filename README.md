@@ -13,7 +13,7 @@ AmritaSpaceFront is the frontend application for the AmritaSpace project, aimed 
 6. [Screenshots](#screenshots)
 7. [Contributing](#contributing)
 8. [License](#license)
-
+9. [Contact Us](#Contact-Us)
 ## Introduction
 
 AmritaSpaceFront is a React-based web application designed to complement the AmritaSpaceBack backend server. It provides a user-friendly interface for users to view, search, and interact with space-related data, including satellites, missions, launches, and more.
@@ -73,5 +73,13 @@ This project is licensed under the MIT License.
 
 ## vbnet
 
+     ```bash
+     Feel free to adjust the contents according to your specific needs or preferences. Let me know if you need further modifications!
+
+
+## Contact Us
+Drop your suggestions at
+
   ```bash
-  Feel free to adjust the contents according to your specific needs or preferences. Let me know if you need further modifications!
+   @amritaspacechennai@gmail.com
+
