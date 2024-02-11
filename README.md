@@ -57,14 +57,12 @@ To run AmritaSpaceFront locally, follow these steps:
 
 4. Start the development server:
 
-  ```bash
-  npm start
-  Open your browser and visit http://localhost:3000 to view the application.
-
+     ```bash
+     npm start
+     Open your browser and visit http://localhost:3000 to view the application.
 
 ## Usage
 Once the development server is up and running, you can explore the application by navigating through different pages, searching for space-related data, and interacting with the dashboard.
-
 
 
 ## Contributing
