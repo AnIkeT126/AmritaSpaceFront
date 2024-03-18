@@ -48,10 +48,11 @@ const [password, setPassword] = useState('');
             setToken(JSON.parse(result).token);
             setEmail(JSON.parse(result).email);
             setName(JSON.parse(result).name);
-            buttontext.innerHTML = 'Verify';
+            if(buttontext && otpfield && uname && pwd)
+            {buttontext.innerHTML = 'Verify';
             otpfield.style.display = 'block';          // Show
             uname.style.display = 'none';          // hide
-            pwd.style.display = 'none';          // hide
+            pwd.style.display = 'none';  }        // hide
   
   
         } else {
