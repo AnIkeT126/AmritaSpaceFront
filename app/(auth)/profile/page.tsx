@@ -43,6 +43,7 @@ import { apiConstants } from "../../apiConstrants";
     // console.log(localStorage.getItem('uemail'));
 
     useEffect(() => {
+         if (typeof window !== 'undefined') {
       let text = localStorage.getItem('uemail');
     var position = text?.search("student");
       var requestOptions: RequestInit = {
@@ -62,6 +63,7 @@ import { apiConstants } from "../../apiConstrants";
         .then(result => setData(JSON.parse(result))
         ).catch(error => console.log('error', error));
       }
+         }
     });
    
     const uploadFiles = (data:any)=> {
