@@ -44,7 +44,7 @@ import { apiConstants } from "../../apiConstrants";
 
     useEffect(() => {
       let text = localStorage.getItem('uemail');
-      if (text !== null){
+      
     var position = text.search("student");
       var requestOptions = {
         method: 'GET',
@@ -56,7 +56,7 @@ import { apiConstants } from "../../apiConstrants";
       .then(response => response.text())
       .then(result => setData(JSON.parse(result))
       ).catch(error => console.log('error', error));
-      } }else {
+      } else {
         setRole('Student')
         fetch(apiConstants.GET_DOC_STUDENTS, requestOptions)
         .then(response => response.text())
