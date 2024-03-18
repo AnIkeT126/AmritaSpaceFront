@@ -17,11 +17,11 @@ import { apiConstants } from "../../apiConstrants";
 
   export default function Profile() {
     const router = useRouter();
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState<File[]>([]);
     const [branch, setBranch] = useState('');
     const [sem, setSem] = useState('');
     const [data, setData] = useState([]);
-    const [role, setRole] = useState();
+    const [role, setRole] = useState<string>();
     const [filters, setFilters] = useState<DataTableFilterMeta>({
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       dname: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
@@ -44,21 +44,24 @@ import { apiConstants } from "../../apiConstrants";
 
     useEffect(() => {
       let text = localStorage.getItem('uemail');
-      if(text !== null){
-    var position = text.search("student");
-      }
-      var requestOptions = {
+    var position = text?.search("student");
+      var requestOptions: RequestInit = {
         method: 'GET',
         redirect: 'follow'
       };
-     else {
+      if(position === -1) {
+       setRole('Teacher')
+      fetch(apiConstants.GET_DOC, requestOptions)
+      .then(response => response.text())
+      .then(result => setData(JSON.parse(result))
+      ).catch(error => console.log('error', error));
+      } else {
         setRole('Student')
         fetch(apiConstants.GET_DOC_STUDENTS, requestOptions)
         .then(response => response.text())
         .then(result => setData(JSON.parse(result))
         ).catch(error => console.log('error', error));
       }
-  }
     });
    
     const uploadFiles = (data:any)=> {
@@ -177,7 +180,7 @@ const changefilestatus = async(status:any, value2:any) => {
 }
   const handleUploadClick = (event:any) => {
     event.preventDefault();
-      if (files.length) {
+      if (files.length && role &&  uploadedname) {
 
         const formdata = new FormData();
         [...files].forEach((file:any, i) => {
@@ -277,7 +280,7 @@ const changefilestatus = async(status:any, value2:any) => {
                     <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">‎ </label>
                     <input type="file"
             multiple
-            onChange={(e)=> setFiles(e.target.files)} className="form-input  text-gray-300"  id="myfile" name="files"/>
+            onChange={(e)=> setFiles(Array.from(e.target.files || [] ))} className="form-input  text-gray-300"  id="myfile" name="files"/>
                   </div>
                   <div className="w-full px-3">
                     <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">‎ </label>
@@ -297,7 +300,7 @@ const changefilestatus = async(status:any, value2:any) => {
     body={(rowData) => {
       return (
         <div
-          sx={{
+          style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -307,10 +310,7 @@ const changefilestatus = async(status:any, value2:any) => {
             style={{
               color: "#3F00FF",
               textDecoration: "underline",
-              cursor: "pointer",
-              "&:hover": {
-                color: "#23297A",
-              },
+              cursor: "pointer"
             }}
             
           >
@@ -336,7 +336,7 @@ const changefilestatus = async(status:any, value2:any) => {
     body={(rowData) => {
       return (
         <div
-          sx={{
+          style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -347,10 +347,7 @@ const changefilestatus = async(status:any, value2:any) => {
             style={{
               color: "#3F00FF",
               textDecoration: "underline",
-              cursor: "pointer",
-              "&:hover": {
-                color: "#23297A",
-              },
+              cursor: "pointer"
             }}>
             <div>{rowData.docstatus}</div>
           </div>
