@@ -44,6 +44,7 @@ import { apiConstants } from "../../apiConstrants";
 
     useEffect(() => {
       let text = localStorage.getItem('uemail');
+      if (text != null)
     var position = text.search("student");
       var requestOptions = {
         method: 'GET',
