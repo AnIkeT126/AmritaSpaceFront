@@ -46,23 +46,19 @@ import { apiConstants } from "../../apiConstrants";
       let text = localStorage.getItem('uemail');
       if(text !== null){
     var position = text.search("student");
+      }
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
       };
-      if(position === -1) {
-       setRole('Teacher')
-      fetch(apiConstants.GET_DOC, requestOptions)
-      .then(response => response.text())
-      .then(result => setData(JSON.parse(result))
-      ).catch(error => console.log('error', error));
-      } }else {
+     else {
         setRole('Student')
         fetch(apiConstants.GET_DOC_STUDENTS, requestOptions)
         .then(response => response.text())
         .then(result => setData(JSON.parse(result))
         ).catch(error => console.log('error', error));
       }
+  }
     });
    
     const uploadFiles = (data:any)=> {
